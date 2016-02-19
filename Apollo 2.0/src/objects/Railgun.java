@@ -1,5 +1,8 @@
 package objects;
 
+import util.converters.LengthConverter;
+import util.converters.PressureConverter;
+
 public class Railgun {
 	static class Variables {
 		/**
@@ -54,7 +57,14 @@ public class Railgun {
 	 * @param d
 	 * @param a
 	 */
-	public Railgun(double l, double d, double a) {
-		Variables.length = l;
+	public Railgun(double l, double d, double a, double lF) {
+		Variables.length = l; Variables.distBetweenRails = d; Variables.angleOfLaunch = a; init(); Variables.lorentzForce = lF;
+	}
+	
+	static void init() {
+		Variables.lengthM = LengthConverter.convertToMeters(Variables.length, "ft");
+		Variables.distBetweenRailsM = LengthConverter.convertToMeters(Variables.distBetweenRails, "in");
+		Variables.angleOfLaunchR = Math.toRadians(Variables.angleOfLaunch);
+		Variables.airPressureN = PressureConverter.convertToPascals(Variables.airPressurePSI, "psi");
 	}
 }
