@@ -51,20 +51,111 @@ public class Railgun {
 		static double lorentzForce;
 	}
 	
+	
+	//*****START CONSTRUCTOR*****
+	
+	
 	/**
+	 * Constructor for Apollo 2.0's railgun
 	 * 
-	 * @param l
-	 * @param d
-	 * @param a
+	 * @Precondition l must be in feet, d must be in inches, a must be in degrees, and lF must be in Newtons
+	 * 
+	 * @param l the length of the railgun
+	 * @param d the distance between the rails of the railgun
+	 * @param a the angle of launch
+	 * @param lF the Lorentz Force generated to launch the projectile
 	 */
 	public Railgun(double l, double d, double a, double lF) {
-		Variables.length = l; Variables.distBetweenRails = d; Variables.angleOfLaunch = a; init(); Variables.lorentzForce = lF;
+		Variables.length = l; Variables.distBetweenRails = d; Variables.angleOfLaunch = a; Variables.lorentzForce = lF; init();
 	}
 	
-	static void init() {
+	
+	//*****END CONSTRUCTOR*****
+	
+	
+	//*****START METHODS*****
+	
+	
+	/**
+	 * Method that initializes the converted unit variables
+	 */
+	void init() {
 		Variables.lengthM = LengthConverter.convertToMeters(Variables.length, "ft");
 		Variables.distBetweenRailsM = LengthConverter.convertToMeters(Variables.distBetweenRails, "in");
 		Variables.angleOfLaunchR = Math.toRadians(Variables.angleOfLaunch);
 		Variables.airPressureN = PressureConverter.convertToPascals(Variables.airPressurePSI, "psi");
 	}
+	
+	
+	//*****END METHODS*****
+	
+	
+	//*****START GETTERS*****
+	
+	
+	/**
+	 * @return the length of the barrel in feet
+	 */
+	public double getLength() {
+		return Variables.length;
+	}
+
+	/**
+	 * @return the length of the barrel in meters
+	 */
+	public double getLengthM() {
+		return Variables.lengthM;
+	}
+
+	/**
+	 * @return the distBetweenRails in inches
+	 */
+	public double getDistBetweenRails() {
+		return Variables.distBetweenRails;
+	}
+
+	/**
+	 * @return the distBetweenRails in meters
+	 */
+	public double getDistBetweenRailsM() {
+		return Variables.distBetweenRailsM;
+	}
+
+	/**
+	 * @return the angleOfLaunch in degrees
+	 */
+	public double getAngleOfLaunch() {
+		return Variables.angleOfLaunch;
+	}
+
+	/**
+	 * @return the angleOfLaunch in radians
+	 */
+	public double getAngleOfLaunchR() {
+		return Variables.angleOfLaunchR;
+	}
+
+	/**
+	 * @return the airPressure in PSI
+	 */
+	public double getAirPressurePSI() {
+		return Variables.airPressurePSI;
+	}
+
+	/**
+	 * @return the airPressure in Pascals (N/m^2)
+	 */
+	public double getAirPressureN() {
+		return Variables.airPressureN;
+	}
+
+	/**
+	 * @return the lorentzForce in Newtons
+	 */
+	public double getLorentzForce() {
+		return Variables.lorentzForce;
+	}
+	
+	
+	//*****END GETTERS*****
 }
