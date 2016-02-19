@@ -50,6 +50,7 @@ public class FlightVariablesCalculator {
 		static final double GRAVITY = 9.8;
 	}
 	
+	HI
 	
 	//*****START CONSTRUCTOR*****
 	
