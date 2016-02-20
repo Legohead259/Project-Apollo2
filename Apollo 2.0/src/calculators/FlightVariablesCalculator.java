@@ -1,6 +1,6 @@
 package calculators;
 
-import util.QuadraticEquation;
+import util.equations.QuadraticEquation;
 
 public class FlightVariablesCalculator {
 	static class Variables {
